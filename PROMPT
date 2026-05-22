@@ -1,0 +1,27 @@
+You are an expert Senior Network Automation Architect and AI Engineer. Your task is to build a production-ready, fully functional prototype for the "Pre-Provisioning Validation for Network Devices" platform based strictly on the provided challenge guidelines.
+
+The architecture must be modular, secure, and production-grade, incorporating an advanced RAG (Retrieval-Augmented Generation) pipeline, a Vector Database, and intuitive data visualizations.
+
+Implement the entire solution covering the following strict specifications:
+
+### 1. SYSTEM ARCHITECTURE & TECH STACK
+- Backend: Python (FastAPI) structured cleanly with separate directories for routes, services, models, and core AI/RAG components.
+- Frontend: React.js with Tailwind CSS and shadcn/ui components to build a sleek, highly scannable corporate network operations dashboard.
+- Vector Database: ChromaDB (or Pinecone) to act as the Knowledge Base storing golden configurations, compliance manuals, and historical network logs.
+- LLM / Agent Orchestration: LangChain or LangGraph configuration to provide a modular foundation for multi-agent scaling in the future.
+
+### 2. CORE FUNCTIONALITIES TO IMPLEMENT (EXACT DOCUMENT MAPPING)
+- Data Ingestion & Privacy Masking: Implement a pre-processing pipeline that accepts network configuration files (YAML/JSON/TXT) and log streams. Use regex/parsers to automatically scrub and mask sensitive data (passwords, proprietary credentials, and real IP addresses) before sending them to the vectorizer or LLM.
+- Vector DB & RAG Pipeline: Build a pipeline that embeds compliance docs and standard templates. When a user uploads a new device config, the system must query the Vector DB to retrieve the relevant "Golden Configuration" and specific enterprise compliance criteria to ground the AI's validation process.
+- Automated Identity & Trust Checks: Write logic that parses device inventory metadata (certificates, NAC posture, device fingerprints). Use the RAG-backed LLM to identify expired certificates, unauthorized self-signed roots, or misconfigured trust frameworks.
+- GenAI Anomaly Detection: Create an LLM prompt that analyzes synthetic DNS/NTP/management plane reachability and success/failure logs against historical trends retrieved from the Vector DB to flag subtle behavioral anomalies.
+- Template Compatibility & Live Diff UI: Compare the uploaded file line-by-line with the retrieved golden template. The frontend must display a visual split/unified 'diff' view highlighting omissions or syntax mismatches in clear Red/Green styling.
+- AI-Driven Impact Simulation (Blast Radius): Map the network topology graph using the `NetworkX` library in Python. Simulate a scenario where the provisioned device fails, compute the dependent nodes affected, and render an interactive, dynamic topology graph on the frontend (using reactflow or D3.js).
+- Auto-Rollback Engine: Implement an automatic rollback simulation. If any critical validation step fails or flags a high-risk regression, trigger a mock automated state revert that instantly resets the deployment pipeline status to its last safe state.
+
+### 3. EXPECTED UI/UX COMPONENTS
+- A modern file drop-zone dashboard capturing real-time validation metrics (Validation Cycle Duration, Defect Rate, Compliance Score).
+- A clean sidebar for navigating between 'Config Validation', 'Interactive Blast Radius Graph', and the 'RAG Knowledge Management System'.
+- Clear alerting overlays with "Go / No-Go" badges for deployment authorization.
+
+Generate the complete, robust, production-ready codebase including the backend structure, vector search handlers, graph generation algorithms, and the main React dashboard views. Ensure all code is cleanly written, commented, and self-contained without omitting key logical steps.
